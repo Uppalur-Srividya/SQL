@@ -1,0 +1,61 @@
+--Problem 1-FOR DISPLAYING ALL COLUMNS FROM yingl7.dataset
+SELECT * FROM sql_for_business_analytics.car_details_1;
+
+
+--Problem 3-FOR DISPLAYING ALL THE CAR NAMES AND SELLING PRICE 
+SELECT NAME, SELLING_PRICE from sql_for_business_analytics.car_details_1
+
+-- Problem3--get the car details whose selling price is less than 50000 as the result.
+SELECT * FROM sql_for_business_analytics.car_details_1
+WHERE SELLING_PRICE < 50000
+
+-- Problem4--get car details of "Maruti Celerio"
+SELECT * FROM sql_for_business_analytics.car_details_1
+WHERE name = "Maruti Celerio Green VXI"
+
+--Problem 6. -- get data in series with cheap cars and from recent year-
+SELECT * FROM sql_for_business_analytics.car_details_1
+order by selling_price asc, year desc
+
+--Problem 7.-- Expensive cars from old to new
+select * from sql_for_business_analytics.car_details_1
+order by selling_price desc, year
+
+--Problem-8- Selling Price desc,km driven asc
+select Name, selling_price,km_driven
+from sql_for_business_analytics.car_details_1
+order by 2 desc -- Here 2 denotes 2nd position in select statement. it wont consider the positions of columns in table
+
+-- PROBLEM 9-- TOP 10 CARS FROM THE LIST
+SELECT * FROM sql_for_business_analytics.car_details_1
+LIMIT 10
+
+---- PROBLEM 10-- TOP 10 MOST EXPENSIVE CARS FROM THE LIST
+SELECT * FROM sql_for_business_analytics.car_details_1
+ORDER BY SELLING_PRICE DESC
+LIMIT 10
+
+--PROBLEM 11--GIVEN ALIAS NAME FOR YEAR  AS MANUFACTURING YEAR FOR THE CAR
+SELECT *,YEAR AS Manufacturing_Year -- AS keyword may or maynot be mentioned.
+from sql_for_business_analytics.car_details_1
+order by Manufacturing_Year
+
+--PROBLEM 12--
+SELECT *,YEAR AS Manufacturing_Year -- AS keyword may or maynot be mentioned.
+from sql_for_business_analytics.car_details_1
+order by Manufacturing_Year desc
+limit 10
+
+--PROBLEM 13--
+SELECT name,YEAR AS Manufacturing_Year -- AS keyword may or maynot be mentioned.
+from sql_for_business_analytics.car_details_1
+where year<2015
+order by Manufacturing_Year desc
+limit 10
+
+--PROBLEM 14-- list all car names without duplicates
+select distinct name from sql_for_business_analytics.car_details_1 --Use Distinct keyword for unique values
+
+--problem 15--- Not Null Usage
+Select * from sql_for_business_analytics.car_details_1
+where name is not null   -- We can't use "!= null" here for "is not null"
